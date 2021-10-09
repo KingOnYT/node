@@ -1,0 +1,48 @@
+const fs = require("fs");
+
+reading files
+VVV
+fs.readFile("./usersinfop/user4.txt", (err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data.toString());
+});
+
+writeing files
+VV
+var msg = "hi";
+var times = 10;
+for (let index = 0; index < times; index++) {
+  fs.writeFile(`./usersinfop/spam${index}.txt`, msg, () => {
+    console.log(`word written ${index} times`);
+  });
+}
+
+// directories
+if (!fs.existsSync("./fuck")) {
+  fs.mkdir("./fuck", (err) => {
+    if (err) {
+      console.log(err);
+    }
+    var msg = "fuck";
+    var times = 10;
+    for (let index = 0; index < times; index++) {
+      fs.writeFile(`./usersinfop/spam${index}.txt`, msg, () => {
+        console.log(`word written ${index} times`);
+      });
+    }
+  });
+}
+
+deleting files
+
+if (fs.existsSync("./usersinfop/user1.txt")) {
+  fs.unlink("./usersinfop/user1.txt", (err) => {
+    if (!fs.existsSync("./usersinfop/user1")) {
+      console.log("err");
+    }
+
+    console.log("gone show");
+  });
+}
